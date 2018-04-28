@@ -5,10 +5,12 @@ const router = express.Router();
 const port = process.env.PORT || 5000;
 const path = require('path');
 
-
-//app.use(express.static(__dirname, '/views'));
-
 var html_dir = './views/'
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
+
+
 //Start the server
 app.listen(port, () => {
     console.log(`server started on port ${port}`);
@@ -20,5 +22,5 @@ app.get('/', (req,res)=>{
 })
 
 app.get('/main', (req,res)=>{
-    res.sendfile(html_dir +'test.html');
+    res.sendFile('test.html', {root: path.join(__dirname, 'views')});
 })
