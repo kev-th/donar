@@ -37,7 +37,7 @@ visualRecognition.classify(params, (err, res)=> {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 //---------------------------------------------------------------Firebase
-var config = {
+var config = { 
     apiKey: "AIzaSyCe2H4qhxan8EduPbmL2zAk6_Bj8UcXU2Y",
     authDomain: "donar-b2ae2.firebaseapp.com",
     databaseURL: "https://donar-b2ae2.firebaseio.com",
