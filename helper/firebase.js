@@ -10,8 +10,11 @@ exports.createItem = (req,res) => {
 
 
     // add the item..
-    firebase_db.push().set(user_item);
-    res.json(user_item);
+    firebase_db.push().set(user_item)
+    .then( (d) => {
+        res.json(user_item)
+    });
+
 }
 
 exports.retrieveItems = (req,res) => {
@@ -20,6 +23,14 @@ exports.retrieveItems = (req,res) => {
         res.json(snapshot.val());
     });
 
+}
+
+exports.updateItem = (req,res) => {
+    // 
+        var data = firebase_db.on("value",snapshot => {
+            res.json(snapshot.val());
+        });
+    
 }
 
 module.exports = exports;

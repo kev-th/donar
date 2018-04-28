@@ -30,13 +30,13 @@ function addsingleItem(itemObject){
     $('.list').append(newItem);
 }
 
-function createItem(){
-    var usrName = "user input!";
-    var usrAdd = "user address";
+function createItem(username,useradd){
+    var usrName = username;
+    var usrAdd = useradd;
     
     $.post("/firebase" , {address : usrAdd}, {name : usrName} )
     .then((data) => {
-        console.log("sucesful!")
+
     }
     //addsingleItem)
     )   
@@ -44,4 +44,21 @@ function createItem(){
         console.log(err);
     })
 
+}
+
+function updateItem(item){
+    var clickedId = item.data('id'); //id of each item is stored within property 'id' itself
+    var updateUrl = '/firebase/' + clickedId;
+    var isDone = !todo.data('true');
+    var updateData = {reservedPickUp: isDone};
+
+    $.ajax({
+        method:'PUT',
+        url: updateUrl,
+        data: updateData
+    })
+    .then( (data) => {
+
+        todo.data('reserved',isDone);
+    })
 }
