@@ -4,8 +4,8 @@ const app = express();
 const router = express.Router();
 const port = process.env.PORT || 5000;
 const path = require('path');
-const firebase = require("firebase");
 const fs = require('fs');
+const firebase = require ('./controller/firebase');
 
 //IBM Cloud Watson Visual Recognation
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
@@ -36,32 +36,6 @@ visualRecognition.classify(params, (err, res)=> {
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
-//---------------------------------------------------------------Firebase
-var config = { 
-    apiKey: "AIzaSyCe2H4qhxan8EduPbmL2zAk6_Bj8UcXU2Y",
-    authDomain: "donar-b2ae2.firebaseapp.com",
-    databaseURL: "https://donar-b2ae2.firebaseio.com",
-    projectId: "donar-b2ae2",
-    storageBucket: "donar-b2ae2.appspot.com",
-    messagingSenderId: "384545117152"
-  };
-  firebase.initializeApp(config);
-  
-  var database = firebase.database().ref();
-
-  // updates user's item information up to firebase database---------
-  // get user input from here...
-  var item_infos = {
-                add:"ABC 123 ave 2FL 11228",
-                name: "sheng",
-                reservedPickUp:false}
-
-  database.push().child("item_info").set(item_infos);
-
-
-//---------------------------------------------------------------Firebase end
-  
-
 
 //Start the server
 app.listen(port, () => {
