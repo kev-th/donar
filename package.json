@@ -18,6 +18,7 @@
   "homepage": "https://github.com/kev-th/donar#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "firebase": "^4.13.1",
     "nodemon": "^1.17.3",
     "path": "^0.12.7"
   }
