@@ -44,7 +44,20 @@ app.get('/', (req,res)=>{
     res.send("Hello");
 })
 
+<<<<<<< HEAD
 //rout to /views/test.html when user go to localhost:5000/main
 app.get('/main', (req,res)=>{
     res.sendFile('test.html', {root: path.join(__dirname, 'views')});
+=======
+app.get('/home', (req,res)=>{
+    res.sendFile('home.html', {root: path.join(__dirname, 'views')});
+})
+
+
+app.get('/item1', (req,res)=>{
+    res.sendFile('item1.html', {root: path.join(__dirname, 'views')});
+})
+app.get('/item2', (req,res)=>{
+    res.sendFile('item2.html', {root: path.join(__dirname, 'views')});
+>>>>>>> 51d38aa4c1d43b409e331560b80a87c0ada49fa8
 })
