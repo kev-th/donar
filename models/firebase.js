@@ -10,7 +10,7 @@ var config = {
   };
   firebase.initializeApp(config);
   
-  var database = firebase.database().ref();
+  var database = firebase.database().ref('item_ino');
 
   // updates user's item information up to firebase database---------
   // get user input from here...

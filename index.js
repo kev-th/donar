@@ -5,7 +5,8 @@ const router = express.Router();
 const port = process.env.PORT || 5000;
 const path = require('path');
 const fs = require('fs');
-const firebase = require ('./helper/firebase');
+const bodyParser = require('body-parser');
+const firebase = require ('./routers/firebase');
 
 //IBM Cloud Watson Visual Recognation
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
@@ -27,7 +28,8 @@ var params = {
 };
 
 // --------------------------->firebase reserved area
-    
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // --------------------------->firebase reserved area
 visualRecognition.classify(params, (err, res)=> {
@@ -41,9 +43,7 @@ visualRecognition.classify(params, (err, res)=> {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 
-app.get('/firebase',(req,res) =>{
-    firebase.retrieveItems;
-})
+app.use('/firebase', firebase)
 
 //Start the server
 app.listen(port, () => {
