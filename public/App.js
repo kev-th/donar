@@ -5,13 +5,17 @@ $(document).ready ( () => {
 // Get data from firebase
 $.getJSON("/firebase")
     .then((itemObjects) => {
-        itemObjects.forEach( (eachItem) => {
-            var newLi = $('<li>'+eachItem.name + ' ' + eachItem.add + ' <span>x</span></li>');
+        console.log(itemObjects);
+        $.each(itemObjects, (k,eachItem) => {
+            var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></li>');
 
             // find id = list from DOM, append new 'newLi' as children.
             $('.list').append(newLi);
         })
 
+        //itemObjects.forEach( (eachItem) => {
+        //    
+        //})
     });
 
     // For each item added by user, simply put a listener to a button and execute createItem();

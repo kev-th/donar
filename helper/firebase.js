@@ -10,7 +10,8 @@ exports.createItem = (req,res) => {
 
 
     // add the item..
-    firebase_db.put().child("item_ino").set(user_item);
+    firebase_db.push().set(user_item);
+    res.json(user_item);
 }
 
 exports.retrieveItems = (req,res) => {
