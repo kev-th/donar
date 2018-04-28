@@ -21,6 +21,14 @@ app.get('/', (req,res)=>{
     res.send("Hello");
 })
 
-app.get('/main', (req,res)=>{
-    res.sendFile('test.html', {root: path.join(__dirname, 'views')});
+app.get('/home', (req,res)=>{
+    res.sendFile('home.html', {root: path.join(__dirname, 'views')});
+})
+
+
+app.get('/item1', (req,res)=>{
+    res.sendFile('item1.html', {root: path.join(__dirname, 'views')});
+})
+app.get('/item2', (req,res)=>{
+    res.sendFile('item2.html', {root: path.join(__dirname, 'views')});
 })
