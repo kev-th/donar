@@ -8,6 +8,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const firebase = require ('./routers/firebase');
 
+
 //IBM Cloud Watson Visual Recognation
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
 
@@ -40,8 +41,8 @@ visualRecognition.classify(params, (err, res)=> {
 })
 
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(__dirname+ '/public'));
+app.use(express.static(__dirname+ '/views'));
 
 app.use('/firebase', firebase)
 

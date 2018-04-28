@@ -1,14 +1,16 @@
 // get firebase model
 const firebase_db = require("../models/firebase");
 
-exports.addItem = (req,res) => {
-    var item = {
-        add:"ABC 123 ave 2FL 11228",
-        name: "sheng",
+exports.createItem = (req,res) => {
+
+    var user_item = {
+        add:req.body.address,
+        name: req.body.name,
         reservedPickUp:false};
 
+
     // add the item..
-    firebase_db.child("item_ino").set(user_items);
+    firebase_db.put().child("item_ino").set(user_item);
 }
 
 exports.retrieveItems = (req,res) => {
