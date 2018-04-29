@@ -14,11 +14,11 @@ $.getJSON("/firebase")
             var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved: ' + eachItem.reservedBy + '</p>');
             newLi.append(newP);
             newLi.addClass("pickup-li");
+            newLi.data('id',k);
             if(!eachItem.reservedPickUp){
                 //load reserve keyword
-                var btn = $('<button>Reserve</button>');
+                var btn = $('<button class="btn-reserve">Reserve</button>');
                 newLi.append(btn);
-                
             }
             //newLi.append(newP);
 
@@ -26,6 +26,12 @@ $.getJSON("/firebase")
             $('#list').append(newLi);
         })
 
+        //$('.btn-reserve').click(() => {
+        //    updateItem($(this));
+        //})
+        $('#list').on('click','.btn-reserve', function(){
+            updateItem($(this).parent());
+        })
         //itemObjects.forEach( (eachItem) => {
         //    
         //})
@@ -33,6 +39,7 @@ $.getJSON("/firebase")
 
     // For each item added by user, simply put a listener to a button and execute createItem();
 
+    $()
 });
 
 
@@ -41,11 +48,12 @@ function addsingleItem(itemObject){
     var newLi = $('<li> </li>');
 
     var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved by: ' + eachItem.reservedBy + '</p>');
+    console.log(itemObject);
     newLi.append(newP);
     newLi.addClass("pickup-li");
     if(!eachItem.reservedPickUp){
         //load reserve keyword
-        var btn = $('<button>Reserve</button>');
+        var btn = $('<button class="btn-reserve">Reserve</button>');
         newLi.append(btn);
         
     }
@@ -66,6 +74,7 @@ function createItem(username,useradd){
 }
 
 function updateItem(item){
+
     var clickedId = item.data('id'); //id of each item is stored within property 'id' itself
     var updateUrl = '/firebase/' + clickedId;
     var isDone = !item.data('reservedPickUp');
