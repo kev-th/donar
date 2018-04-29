@@ -49,9 +49,10 @@
         });
         infoWindow = new google.maps.InfoWindow;
 
-        //var geocoder = new google.maps.Geocoder();
-        // Call code address
-        //codeAddress(geocoder);
+        //var addressArray = document.getElementsByClassName
+        // Loop through all the addresses and create markers
+        var address = "2775 east 12th street";
+      	geocode(map, address);
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -90,22 +91,33 @@
         infoWindow.open(map);
       }
 
-      geocode();
-
       // Geocode function
-      function geocode() {
-      	var location = "2775 east 12th street";
+      function geocode(map, geoAddress) {
+      	var location = geoAddress;
       	axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
       		params:{
       			address:location,
       			key:'AIzaSyBXHPLWP9HPpwhlx7TtfxtFHDxYxP0zlLk'
       		}
       	})
-      	.then(function(responce){
-      		console.log(responce);
+      	.then(function(response){
+      		console.log(response);
+      		console.log("formated: " + response.data.results[0].formatted_address);
+      		// Locate lat and long
+      		var lat = response.data.results[0].geometry.location.lat;
+      		var lng = response.data.results[0].geometry.location.lng;
+      		console.log("Lat: " + lat);
+      		console.log("long: " + lng);
+      		var myLatLng2 = {lat, lng};
+      		// Make a marker based off address
+      	   var marker = new google.maps.Marker({
+           	position: myLatLng2,
+            map: map,
+            title: 'Hello World!'
+          });
       	})
       	.catch(function(error){
-      		console.log(error);
+      		console.log("error");
       	});
       }
     </script>

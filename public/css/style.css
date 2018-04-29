@@ -57,6 +57,10 @@ box-shadow: -5px 13px 19px -11px rgba(0,0,0,0.75);
   color: white;
 }
 
+.pickup-address-hidden {
+  display: none;
+}
+
   .pickup-li {
     background-color: white;
     padding: 5px;
