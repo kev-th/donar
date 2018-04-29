@@ -65,6 +65,8 @@ function createItem(username,useradd){
 
 }
 
+
+
 function updateItem(item){
     var clickedId = item.data('id'); //id of each item is stored within property 'id' itself
     var updateUrl = '/firebase/' + clickedId;

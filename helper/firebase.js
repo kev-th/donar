@@ -4,8 +4,8 @@ const firebase_db = require("../models/firebase");
 exports.createItem = (req,res) => {
 
     var user_item = {
-        add:req.body.address,
-        name: req.body.name,
+        add:req.params.address,
+        name: req.params.name,
         reservedPickUp:false,
         reservedBy: 'Hackathon Demo'
     };
