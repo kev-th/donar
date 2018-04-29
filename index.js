@@ -6,6 +6,7 @@ const port = process.env.PORT || 5000;
 const path = require('path');
 const fs = require('fs');
 const firebase_route = require ('./routers/firebase');
+bodyParser = require('body-parser');
 const firebase = require('firebase');
 
 //IBM Cloud Watson Visual Recognation
@@ -31,12 +32,13 @@ var params = {
     
 
 // --------------------------->firebase reserved area
-visualRecognition.classify(params, (err, res)=> {
-    if(err)
-    console.log(err);
-    else
-    console.log(JSON.stringify(res, null, 2))
-})
+// visualRecognition.classify(params, (err, res)=> {
+//     if(err)
+//     console.log(err);
+//     else
+//     console.log(JSON.stringify(res, null, 2))
+// })
+app.use(bodyParser.urlencoded());
 
 
 app.use(express.static(path.join(__dirname, 'public')));

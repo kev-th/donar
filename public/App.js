@@ -1,5 +1,7 @@
 
 // when window loaded fully, then move on
+
+
 $(document).ready ( () => {
 
 // Get data from firebase
@@ -37,6 +39,11 @@ $.getJSON("/firebase")
         $('#list').on('click','.btn-reserve', function(){
             updateItem($(this).parent());
         })
+
+        $('#btn-submit').click(function() {
+            createItem();
+        })
+        
         //itemObjects.forEach( (eachItem) => {
         //    
         //})
@@ -65,17 +72,22 @@ function addsingleItem(itemObject){
     $('#list').append(newLi);
 }
 
-function createItem(username,useradd){
-    var usrName = username;
-    var usrAdd = useradd;
+function createItem(){
+    var usrName = document.getElementById('Name').value;
+    var usrAdd = document.getElementById('Addreess').value;;
     
-    $.post("/firebase" , {address : usrAdd,
-                            name : usrName} )
+    $.post("/firebase" , {address : usrAdd})
     .then(addsingleItem)
     .catch( (err)  => {
         console.log(err);
     })
 
+   /*firebase.database().ref('item_ino').push().set({
+            add:'2222',
+            name: 'kevin',
+            reservedPickUp:false,
+            reservedBy: 'Hackathon Demo'
+        })*/
 }
 
 
