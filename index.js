@@ -62,7 +62,7 @@ app.listen(port, () => {
 
 //Rout to the index/home page
 app.get('/', (req,res)=>{
-    res.send("Hello");
+    res.sendFile('home.html', {root: path.join(__dirname, 'views')});
 })
 
 //rout to /views/test.html when user go to localhost:5000/main
