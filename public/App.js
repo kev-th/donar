@@ -8,10 +8,11 @@ $.getJSON("/firebase")
         
         // Each item in the object
         $.each(itemObjects, (k,eachItem) => {
-            var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' </li>');
+            var newLi = $('<li> </li>');
             //console.log(eachItem);
             //var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></li>');
-            //var newP = $('<p>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></p>');
+            var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved: ' + eachItem.reservedBy + '</p>');
+            newLi.append(newP);
             newLi.addClass("pickup-li");
             //newLi.append(newP);
 
@@ -31,9 +32,12 @@ $.getJSON("/firebase")
 
 
 function addsingleItem(itemObject){
-    var newItem = $('<li class="task">' + itemObject.name + itemObject.add + ' <span>x</span></li>');
+    var newLi = $('<li> </li>');
 
-    $('.list').append(newItem);
+    var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved by: ' + eachItem.reservedBy + '</p>');
+    newLi.append(newP);
+    newLi.addClass("pickup-li");
+    $('#list').append(newLi);
 }
 
 function createItem(username,useradd){

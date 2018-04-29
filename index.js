@@ -5,7 +5,7 @@ const router = express.Router();
 const port = process.env.PORT || 5000;
 const path = require('path');
 const fs = require('fs');
-const Firebase = require ('./helper/firebase');
+const firebase_route = require ('./routers/firebase');
 const firebase = require('firebase');
 
 //IBM Cloud Watson Visual Recognation
@@ -42,6 +42,7 @@ visualRecognition.classify(params, (err, res)=> {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 
+app.use('/firebase', firebase_route);
 
 app.put('/firebase/:id' , (req,res)=>{
     //res.send(req.params.id);
@@ -49,7 +50,7 @@ app.put('/firebase/:id' , (req,res)=>{
     updates["/item_ino/" + req.params.id + "/reservedPickUp"] = true;
     updates["/item_ino/" + req.params.id + "/reservedBy"] = 'Hackathon Demo';
     firebase.database().ref().update(updates);
-})
+});
 
 //Start the server
 app.listen(port, () => {
