@@ -11,8 +11,13 @@ $.getJSON("/firebase")
             var newLi = $('<li> </li>');
             //console.log(eachItem);
             //var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></li>');
-            var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved: ' + eachItem.reservedBy + '</p>');
+            var newP = $('<p> name:'  + eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved: ' + eachItem.reservedBy + '</p>');
+            // This has only the address, we will add a class that makes it display:0
+            // But we still want the info
+            var newP2 = $('<p>'  + eachItem.add + ' </p>');
+            newP2.addClass("pickup-address-hidden");
             newLi.append(newP);
+            newLi.append(newP2);
             newLi.addClass("pickup-li");
             newLi.data('id',k);
             if(!eachItem.reservedPickUp){

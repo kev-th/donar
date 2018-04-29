@@ -49,12 +49,27 @@ box-shadow: -5px 13px 19px -11px rgba(0,0,0,0.75);
 
   }
 
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
+}
+
   .pickup-li {
     background-color: white;
     padding: 5px;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border-radius: 5px;
+-webkit-box-shadow: 10px 10px 5px -4px rgba(46,46,46,1);
+-moz-box-shadow: 10px 10px 5px -4px rgba(46,46,46,1);
+box-shadow: 10px 10px 5px -4px rgba(46,46,46,1);
+  }
+
+  .pickup-address-hidden {
+    color: red;
   }
