@@ -14,6 +14,12 @@ $.getJSON("/firebase")
             var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved: ' + eachItem.reservedBy + '</p>');
             newLi.append(newP);
             newLi.addClass("pickup-li");
+            if(!eachItem.reservedPickUp){
+                //load reserve keyword
+                var btn = $('<button>Reserve</button>');
+                newLi.append(btn);
+                
+            }
             //newLi.append(newP);
 
             // find id = list from DOM, append new 'newLi' as children.
@@ -37,6 +43,12 @@ function addsingleItem(itemObject){
     var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved by: ' + eachItem.reservedBy + '</p>');
     newLi.append(newP);
     newLi.addClass("pickup-li");
+    if(!eachItem.reservedPickUp){
+        //load reserve keyword
+        var btn = $('<button>Reserve</button>');
+        newLi.append(btn);
+        
+    }
     $('#list').append(newLi);
 }
 
