@@ -6,7 +6,8 @@ router.route('/')
 .get(helper.retrieveItems)
 .post(helper.createItem)
 
-
+router.route('/:itemID')
+.put(helper.updateItem)
 /*router.route('/:itemId')
 .get(helper.getTodo)
 .put(helper.putTodo)

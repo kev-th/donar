@@ -5,12 +5,25 @@ $(document).ready ( () => {
 // Get data from firebase
 $.getJSON("/firebase")
     .then((itemObjects) => {
-        console.log(itemObjects);
+        
+        // Each item in the object
         $.each(itemObjects, (k,eachItem) => {
-            var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></li>');
+            var newLi = $('<li> </li>');
+            //console.log(eachItem);
+            //var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></li>');
+            var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved: ' + eachItem.reservedBy + '</p>');
+            newLi.append(newP);
+            newLi.addClass("pickup-li");
+            if(!eachItem.reservedPickUp){
+                //load reserve keyword
+                var btn = $('<button>Reserve</button>');
+                newLi.append(btn);
+                
+            }
+            //newLi.append(newP);
 
             // find id = list from DOM, append new 'newLi' as children.
-            $('.list').append(newLi);
+            $('#list').append(newLi);
         })
 
         //itemObjects.forEach( (eachItem) => {
@@ -25,23 +38,46 @@ $.getJSON("/firebase")
 
 
 function addsingleItem(itemObject){
-    var newItem = $('<li class="task">' + itemObject.name + itemObject.add + ' <span>x</span></li>');
+    var newLi = $('<li> </li>');
 
-    $('.list').append(newItem);
+    var newP = $('<p> name:'  +eachItem.name + ' </p> <p> Address:' + eachItem.add + ' </p> <p>reserved by: ' + eachItem.reservedBy + '</p>');
+    newLi.append(newP);
+    newLi.addClass("pickup-li");
+    if(!eachItem.reservedPickUp){
+        //load reserve keyword
+        var btn = $('<button>Reserve</button>');
+        newLi.append(btn);
+        
+    }
+    $('#list').append(newLi);
 }
 
-function createItem(){
-    var usrName = "user input!";
-    var usrAdd = "user address";
+function createItem(username,useradd){
+    var usrName = username;
+    var usrAdd = useradd;
     
-    $.post("/firebase" , {address : usrAdd}, {name : usrName} )
-    .then((data) => {
-        console.log("sucesful!")
-    }
-    //addsingleItem)
-    )   
+    $.post("/firebase" , {address : usrAdd,
+                            name : usrName} )
+    .then(addsingleItem)
     .catch( (err)  => {
         console.log(err);
     })
 
+}
+
+function updateItem(item){
+    var clickedId = item.data('id'); //id of each item is stored within property 'id' itself
+    var updateUrl = '/firebase/' + clickedId;
+    var isDone = !item.data('reservedPickUp');
+    var updateData = {reservedPickUp: isDone};
+
+    $.ajax({
+        method:'PUT',
+        url: updateUrl,
+        data: updateData
+    })
+    .then( (data) => {
+
+        item.data('reservedPickUp',isDone);
+    })
 }
