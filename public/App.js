@@ -7,8 +7,8 @@ $.getJSON("/firebase")
     .then((itemObjects) => {
         console.log(itemObjects);
         $.each(itemObjects, (k,eachItem) => {
-            var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></li>');
-
+            var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' </li>');
+            console.log(eachItem);
             // find id = list from DOM, append new 'newLi' as children.
             $('.list').append(newLi);
         })
@@ -34,12 +34,9 @@ function createItem(username,useradd){
     var usrName = username;
     var usrAdd = useradd;
     
-    $.post("/firebase" , {address : usrAdd}, {name : usrName} )
-    .then((data) => {
-
-    }
-    //addsingleItem)
-    )   
+    $.post("/firebase" , {address : usrAdd,
+                            name : usrName} )
+    .then(addsingleItem)
     .catch( (err)  => {
         console.log(err);
     })
@@ -49,7 +46,7 @@ function createItem(username,useradd){
 function updateItem(item){
     var clickedId = item.data('id'); //id of each item is stored within property 'id' itself
     var updateUrl = '/firebase/' + clickedId;
-    var isDone = !todo.data('true');
+    var isDone = !item.data('reservedPickUp');
     var updateData = {reservedPickUp: isDone};
 
     $.ajax({
@@ -59,6 +56,6 @@ function updateItem(item){
     })
     .then( (data) => {
 
-        todo.data('reserved',isDone);
+        item.data('reservedPickUp',isDone);
     })
 }
