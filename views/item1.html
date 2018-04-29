@@ -11,7 +11,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a class="navbar-brand" href="#">BONTIFUL</a>
               </div>
               <ul class="nav navbar-nav">
                 <li><a href="/home">Non-profit Portal</a></li>
@@ -25,13 +25,16 @@
           <div id="imageOverlay"><div id="colorOverlay">
             <!-- button controls -->
               <div id="topOverlayBanner">
-                <div id="leftOverlay" class="white smooth large"><h1>DONAR</h1></div>
-                <div id="RightOverlay" class="smooth white medium"><span>Are you a non-profit? <a href="/home.html" style="text-decoration: none; color: #2ed573;">Admin</a></span></div>
+                
+                  <div id="leftOverlayLogo"><img src="/images/logo.png"/></div>
+                  <div id="leftOverlay" class="white smooth large"><h1>BONTIFUL</h1></div>
+              
+                <div id="RightOverlay" class="smooth white medium"><span>Are you a non-profit? <a href="/home.html" style="text-decoration: none; color: #2ed573;">Non-profit portal</a></span></div>
               </div>
               <div id="overlayContainer">
                 <div class="white smooth" id="topText"><i><h1>"Donate to a fellow New Yorker in need"</h1></i></div>
                 <div class=" white smooth" id="bottomButton"><input class="initialism slide_open btn btn-success" id="donateButton" type="button" value="Donate"/></div>
-                <span class="white smooth large"><h3>Learn More<h3>
+                <!-- <span class="white smooth large"><h3>Learn More<h3> -->
                   <!-- Plae the upside down angle bracket in this section of th code -->
                 </span>
               </div>
@@ -39,11 +42,11 @@
         </div>
       </section>
       <!-- second -->
-      <section id="learnMore" class="">
+      <!-- <section id="learnMore" class="">
       </section>
       <section id="lastSectionView" class="">
         s
-      </section>
+      </section> -->
 
       <!-- Pop up element -->
       <div id="slide" class="well">
@@ -51,20 +54,23 @@
           <img src="/images/userInfo.png"/>
         </div>
         <div id="midSection" class="matte">
-          <h1>Step 1</h1>
+          <!-- <h1>Step 1</h1> -->
           <span class="smooth large">Your basic info</span>
         </div>
         <div id="bottomSection">
             <form id="submissionForm" class="smooth medium">
               <label>Name:</label><br>
               <input type="text" id="Name" class="textboxUI"><br>
-              <label>Phone:</label><br>
-              <input type="text" class="textboxUI" id="Phone"><br>
               <label>Address:</label><br>
-              <input type="text" class="textboxUI" id="Addreess">
+              <input type="text" class="textboxUI" id="Address"><br>
+              <label>Donation Description:</label><br>
+              <input type="text" class="textboxUI" id="Address"> <br>
+              <input type="submit" value="Submit" id="submitBtn" class="submitBtn"/>
             </form>
-        </div>
+        </div><br>
+
         <!-- any buttons -->
+        
       </div>
 
       <!-- Include jQuery -->

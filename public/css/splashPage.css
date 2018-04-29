@@ -131,6 +131,15 @@
   border-radius: 4px;
 }
 
+#submitBtn {
+  border: none;
+  height: 40px; widows: 100px;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 30px 10px 30px;
+  background-color: #ff4757;
+}
+
 #learnMore {
   background-color: #fff;
   height: 100vh; width: 100vw;
@@ -139,6 +148,14 @@
 #topOverlayBanner {
   /* border: 1px solid red; */
   display: flex;
+}
+
+  #leftOverlayLogo {
+ 
+  z-index: 10;
+  padding-top: 15px;
+  padding-left: 40px;
+  overflow: visible;
 }
 #topOverlayBanner #leftOverlay, #RightOverlay {
   width: 50vw;
@@ -152,7 +169,7 @@
 #topOverlayBanner #leftOverlay h1 {
   float: left;
   padding-top: 20px;
-  padding-left: 40px;
+  padding-left: 10px;
 }
 
 
