@@ -5,9 +5,8 @@ const router = express.Router();
 const port = process.env.PORT || 5000;
 const path = require('path');
 const fs = require('fs');
-const bodyParser = require('body-parser');
-const firebase = require ('./routers/firebase');
-
+const Firebase = require ('./helper/firebase');
+const firebase = require('firebase');
 
 //IBM Cloud Watson Visual Recognation
 var VisualRecognitionV3 = require('watson-developer-cloud/visual-recognition/v3');
@@ -29,8 +28,7 @@ var params = {
 };
 
 // --------------------------->firebase reserved area
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+    
 
 // --------------------------->firebase reserved area
 visualRecognition.classify(params, (err, res)=> {
@@ -41,14 +39,27 @@ visualRecognition.classify(params, (err, res)=> {
 })
 
 
-app.use(express.static(__dirname+ '/public'));
-app.use(express.static(__dirname+ '/views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'views')));
 
-app.use('/firebase', firebase)
+app.get('/firebase',(req,res) =>{
+    firebase.retrieveItems;
+})
+
+app.put('/firebase/:id' , (req,res)=>{
+    //res.send(req.params.id);
+    var updates = {};
+    updates["/item_ino/" + req.params.id + "/reservedPickUp"] = true;
+    updates["/item_ino/" + req.params.id + "/reservedBy"] = 'Hackathon Demo';
+    firebase.database().ref().update(updates);
+})
 
 //Start the server
 app.listen(port, () => {
     console.log(`server started on port ${port}`);
+    console.log(firebase.database().ref("item_ino").on("value", snapshot => {
+        console.log(snapshot.val());
+    }))   
 });
 
 //Rout to the index/home page
