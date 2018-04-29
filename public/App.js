@@ -5,12 +5,18 @@ $(document).ready ( () => {
 // Get data from firebase
 $.getJSON("/firebase")
     .then((itemObjects) => {
-        console.log(itemObjects);
+        
+        // Each item in the object
         $.each(itemObjects, (k,eachItem) => {
             var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' </li>');
-            console.log(eachItem);
+            //console.log(eachItem);
+            //var newLi = $('<li>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></li>');
+            //var newP = $('<p>' + eachItem.name + ' ' + eachItem.add + ' <span>x</span></p>');
+            newLi.addClass("pickup-li");
+            //newLi.append(newP);
+
             // find id = list from DOM, append new 'newLi' as children.
-            $('.list').append(newLi);
+            $('#list').append(newLi);
         })
 
         //itemObjects.forEach( (eachItem) => {

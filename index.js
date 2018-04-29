@@ -42,9 +42,6 @@ visualRecognition.classify(params, (err, res)=> {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 
-app.get('/firebase',(req,res) =>{
-    firebase.retrieveItems;
-})
 
 app.put('/firebase/:id' , (req,res)=>{
     //res.send(req.params.id);
