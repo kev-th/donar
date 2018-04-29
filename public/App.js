@@ -24,6 +24,7 @@ $.getJSON("/firebase")
 
             // find id = list from DOM, append new 'newLi' as children.
             $('#list').append(newLi);
+            console.log(newLi);
         })
 
         //itemObjects.forEach( (eachItem) => {
