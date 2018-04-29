@@ -6,6 +6,7 @@ const port = process.env.PORT || 5000;
 const path = require('path');
 const fs = require('fs');
 const firebase_route = require ('./routers/firebase');
+bodyParser = require('body-parser');
 const firebase = require('firebase');
 
 //IBM Cloud Watson Visual Recognation
@@ -31,12 +32,13 @@ var params = {
     
 
 // --------------------------->firebase reserved area
-visualRecognition.classify(params, (err, res)=> {
-    if(err)
-    console.log(err);
-    else
-    console.log(JSON.stringify(res, null, 2))
-})
+// visualRecognition.classify(params, (err, res)=> {
+//     if(err)
+//     console.log(err);
+//     else
+//     console.log(JSON.stringify(res, null, 2))
+// })
+app.use(bodyParser.urlencoded());
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -62,7 +64,7 @@ app.listen(port, () => {
 
 //Rout to the index/home page
 app.get('/', (req,res)=>{
-    res.send("Hello");
+    res.sendFile('home.html', {root: path.join(__dirname, 'views')});
 })
 
 //rout to /views/test.html when user go to localhost:5000/main

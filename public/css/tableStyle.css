@@ -8,7 +8,11 @@
   width: 30%;
   float: left;
   height: 100vh;
+<<<<<<< HEAD
   background-color: #ff4757;
+=======
+  background-color: #383838;
+>>>>>>> 1f268247a4f4ea22e84dc8bb9c0d17662c2c3e05
   padding-top: 10px;
   overflow: auto;
 }

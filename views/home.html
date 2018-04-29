@@ -10,38 +10,31 @@
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
 
 
     <body>
 
-        <nav id="navigationComponent" class="navbar navbar-default">
+        <nav id="navigationComponent" class="navbar navbar-default" style="background-color: #383838;">
             <div class="container-fluid">
               <div class="navbar-header">
                 <a class="navbar-brand" href="#">Donar</a>
               </div>
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="/item1">Item 1 </a></li>
-                <li><a href="/item2">Item 2</a></li>
+                <li class="active"><a href="#">Non-profit Portal</a></li>
+                <li><a href="/item1">User Portal </a></li>
               </ul>
             </div>
           </nav>
-          <!--
-          <div id="textField">
-            <span id="search">Search</span>
-          </div>-->
+
           <!-- Map parameters -->
           <div id="map">
           </div>
           <ul id="list">
-          	<!--li class="pickup-li">
-          		<p>Name:</p>
-          		<p>Address:</p>
-          		<p>size:</p>
-          		<button>Reserve</button>
-          	</li-->
+
           </ul>
+          <p id="address">2775 east 12th street</p>
           <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -54,6 +47,18 @@
           zoom: 14
         });
         infoWindow = new google.maps.InfoWindow;
+
+        $(window).bind("load", function() {
+		    $(function(){
+	    		myArray = $('.pickup-address-hidden');
+				//alert(myArray.length);
+				for (var i = 0; i < myArray.length; i++) {
+					console.log(myArray[i].innerHTML);
+					var addressString = myArray[i].innerHTML;
+					geocode(map, addressString);
+				}
+			});
+		});
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -83,6 +88,36 @@
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+
+      // Geocode function
+      function geocode(map, geoAddress) {
+      	var location = geoAddress;
+      	axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
+      		params:{
+      			address:location,
+      			key:'AIzaSyBXHPLWP9HPpwhlx7TtfxtFHDxYxP0zlLk'
+      		}
+      	})
+      	.then(function(response){
+      		console.log(response);
+      		console.log("formated: " + response.data.results[0].formatted_address);
+      		// Locate lat and long
+      		var lat = response.data.results[0].geometry.location.lat;
+      		var lng = response.data.results[0].geometry.location.lng;
+      		console.log("Lat: " + lat);
+      		console.log("long: " + lng);
+      		var myLatLng2 = {lat, lng};
+      		// Make a marker based off address
+      	   var marker = new google.maps.Marker({
+           	position: myLatLng2,
+            map: map,
+            title: 'Hello World!'
+          });
+      	})
+      	.catch(function(error){
+      		console.log("error");
+      	});
+      }
     </script>
     <script>
 
@@ -95,6 +130,6 @@
     <script src="App.js" type="text/javascript"></script>
     </body>
     <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHExscdFqDf89r4JC5zJTrpfS9YyBaL8Q&callback=initMap">
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXHPLWP9HPpwhlx7TtfxtFHDxYxP0zlLk&callback=initMap">
    </script>
 </html>
