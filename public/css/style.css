@@ -57,10 +57,6 @@ box-shadow: -5px 13px 19px -11px rgba(0,0,0,0.75);
   color: white;
 }
 
-.pickup-address-hidden {
-  display: none;
-}
-
   .pickup-li {
     background-color: white;
     padding: 5px;
@@ -72,4 +68,8 @@ box-shadow: -5px 13px 19px -11px rgba(0,0,0,0.75);
 -webkit-box-shadow: 10px 10px 5px -4px rgba(46,46,46,1);
 -moz-box-shadow: 10px 10px 5px -4px rgba(46,46,46,1);
 box-shadow: 10px 10px 5px -4px rgba(46,46,46,1);
+  }
+
+  .pickup-address-hidden {
+    color: red;
   }

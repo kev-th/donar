@@ -49,10 +49,17 @@
         });
         infoWindow = new google.maps.InfoWindow;
 
-        //var addressArray = document.getElementsByClassName
-        // Loop through all the addresses and create markers
-        var address = "2775 east 12th street";
-      	geocode(map, address);
+        $(window).bind("load", function() {
+		    $(function(){
+	    		myArray = $('.pickup-address-hidden');
+				//alert(myArray.length);
+				for (var i = 0; i < myArray.length; i++) {
+					console.log(myArray[i].innerHTML);
+					var addressString = myArray[i].innerHTML;
+					geocode(map, addressString);
+				}
+			});
+		});
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -73,14 +80,6 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-        // Lat long for empire state
-        var myLatLng = {lat: 40.6974881, lng: -73.979681};
-        // Create a marker
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
       }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
