@@ -1,15 +1,11 @@
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    
-        <script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    
-      </head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" a href="/css/splashPage.css">
+    </head>
     <body>
 
         <nav class="navbar navbar-default">
@@ -24,15 +20,67 @@
             </div>
           </nav>
 
-          <form id="submissionForm">
-            <label>Name:</label>
-            <input type="text" id="Name">
-            <label>Phone:</label>
-            <input type="text" id="Phone">
-            <label>Address:</label>
-            <input type="text" id="Addreess">
-            <input type='button' id='btn-submit' value='submit'>
-          </form>
-        <script src="App.js" type="text/javascript"></script>
+      <!-- First -->
+      <section id="splashPage" class="">
+          <div id="imageOverlay"><div id="colorOverlay">
+            <!-- button controls -->
+              <div id="topOverlayBanner">
+                <div id="leftOverlay" class="white smooth large"><h1>DONAR</h1></div>
+                <div id="RightOverlay" class="smooth white medium"><span>Are you a non-profit? <a href="/home.html" style="text-decoration: none; color: #2ed573;">Admin</a></span></div>
+              </div>
+              <div id="overlayContainer">
+                <div class="white smooth" id="topText"><i><h1>"Donate to a fellow New Yorker in need"</h1></i></div>
+                <div class=" white smooth" id="bottomButton"><input class="initialism slide_open btn btn-success" id="donateButton" type="button" value="Donate"/></div>
+                <span class="white smooth large"><h3>Learn More<h3>
+                  <!-- Plae the upside down angle bracket in this section of th code -->
+                </span>
+              </div>
+          </div>
+        </div>
+      </section>
+      <!-- second -->
+      <section id="learnMore" class="">
+      </section>
+      <section id="lastSectionView" class="">
+        s
+      </section>
+
+      <!-- Pop up element -->
+      <div id="slide" class="well">
+        <div id="topSection">
+          <img src="/images/userInfo.png"/>
+        </div>
+        <div id="midSection" class="matte">
+          <h1>Step 1</h1>
+          <span class="smooth large">Your basic info</span>
+        </div>
+        <div id="bottomSection">
+            <form id="submissionForm" class="smooth medium">
+              <label>Name:</label><br>
+              <input type="text" id="Name" class="textboxUI"><br>
+              <label>Phone:</label><br>
+              <input type="text" class="textboxUI" id="Phone"><br>
+              <label>Address:</label><br>
+              <input type="text" class="textboxUI" id="Addreess">
+            </form>
+        </div>
+        <!-- any buttons -->
+      </div>
+
+      <!-- Include jQuery -->
+       <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+       <!-- Include jQuery Popup Overlay -->
+       <script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+
+       <script>
+       $('#slide').popup({
+ outline: true, // optional
+ focusdelay: 400, // optional
+ vertical: 'top' //optional
+});
+       </script>
+
+
     </body>
 </html>

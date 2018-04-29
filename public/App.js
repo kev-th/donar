@@ -76,8 +76,7 @@ function createItem(){
     var usrName = document.getElementById('Name').value;
     var usrAdd = document.getElementById('Addreess').value;;
     
-    $.post("/firebase" , {address : usrAdd})
-    .then(addsingleItem)
+    $.post("/firebase" , {address : usrAdd,name : usrName})
     .catch( (err)  => {
         console.log(err);
     })

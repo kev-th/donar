@@ -5,7 +5,7 @@ exports.createItem = function(req,res) {
     
     var user_item = {
         add: req.body.address,
-        name: 'req.body.name',
+        name: req.body.name,
         reservedPickUp: false,
         reservedBy: 'Hackathon Demo'
     };
