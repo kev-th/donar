@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* class colors */
+.white {
+  color: #fff;
+}
+
+.black {
+  color: #000;
+}
+
+
+/* fonts */
+.smooth {
+  font-family: avenir;
+}
+
+/* Sizes */
+
+.large {
+  font-size: 26px;
+}
+
+
+#imageOverlay  {
+  background-image: url('https://s3-eu-central-1.amazonaws.com/eurosender-blog/wp-content/uploads/2017/09/28133542/shutterstock_361009364-1024x683.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
+#imageOverlay #colorOverlay {
+  height: 100vh; width: 100vw;
+  /* Green overlay*/
+  /* background-color: rgba(39, 174, 96, 0.6); */
+  background-color: rgba(44, 62, 80, 0.6);
+  /* background-color: rgba(39, 174, 96, 0.6); */
+
+}
+
+/* UI components */
+#overlayContainer {
+  position: absolute;
+  height: 30vh; width: 100vw;
+  /* border: 1px solid #fff; */
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  bottom: 0;
+}
+#overlayContainer #bottomButton {
+  padding: 25px 0 25px 0;
+}
+
+#overlayContainer #bottomButton input{
+
+  border: none;
+  height: 60px;
+  width: 330px;
+  background-color: #ff4757;
+  border: 4px;
+  -webkit-transition:all 0.5s ease-out;
+ -moz-transition:all 0.5s ease-out;
+ -ms-transition:all 0.5s ease-out;
+ -o-transition:all 0.5s ease-out;
+ transition:all 0.5s ease-out;
+
+}
+
+#overlayContainer #bottomButton input:hover {
+  background-color: #ff4757;
+  -webkit-transform:scale(1.2);
+ -moz-transform:scale(1.2);
+ -ms-transform:scale(1.2);
+ -o-transform:scale(1.2);
+ transform:scale(1.2);
+}
