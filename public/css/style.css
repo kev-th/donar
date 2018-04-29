@@ -21,6 +21,10 @@
     background-color: red;
   }
 
+  .split-container {
+
+  }
+
   #navigationComponent {
     background-color: #ffffff;
 
@@ -43,4 +47,14 @@ box-shadow: -5px 13px 19px -11px rgba(0,0,0,0.75);
     margin-bottom: 15px;
     border-radius: 5px;
 
+  }
+
+  .pickup-li {
+    background-color: white;
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
   }

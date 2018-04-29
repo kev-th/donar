@@ -3,14 +3,14 @@
   margin: 0;
 }
 
-#dataTable {
-  position: absolute;
-  top: 13%;
-  right: 0;
-  float: right;
-  width: 30vw;
+#list {
+  position: relative;
+  width: 30%;
+  float: left;
   height: 100vh;
   background-color: #26de81;
+  padding-top: 10px;
+  overflow: auto;
 }
 
 #dataTable #tableCell {
